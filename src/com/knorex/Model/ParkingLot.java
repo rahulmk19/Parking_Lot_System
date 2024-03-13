@@ -29,12 +29,15 @@ public class ParkingLot {
 
 	public void addVehicle(Vehicle vehicle) {
 		for (Floor floor : floors) {
-			if (floor.hasAvailableSpace(vehicle.getType())) {
-				floor.parkVehicle(vehicle);
-				return;
+			try {
+				if (floor.hasAvailableSpace(vehicle.getType())) {
+					floor.parkVehicle(vehicle);
+				}
+			} catch (Exception ex) {
+				System.out.println("Parking is full for type " + vehicle.getType());
 			}
+
 		}
-		System.out.println("Parking is full for type " + vehicle.getType());
 	}
 
 	public void removeVehicle(String registrationNumber) {

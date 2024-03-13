@@ -2,10 +2,10 @@ package com.knorex.main;
 
 import com.knorex.Model.Vehicle;
 import com.knorex.Model.VehicleType;
+import com.knorex.repository.CostStrategy;
 import com.knorex.repository.ParkingLotOperations;
-import com.knorex.repository.ParkingLotServiceImpl;
-import com.knorex.service.CostStrategy;
 import com.knorex.service.CostStrategyImpl;
+import com.knorex.service.ParkingLotServiceImpl;
 
 public class Main {
 
@@ -15,16 +15,15 @@ public class Main {
 		ParkingLotOperations parkingLotService = new ParkingLotServiceImpl(costStrategy);
 		parkingLotService.init(2, 5, VehicleType.CAR);
 
-		parkingLotService.addVehicle(new Vehicle("Car123", "Red", VehicleType.CAR, 0));
+		parkingLotService.addVehicle(new Vehicle("Car123", "Red", VehicleType.CAR, 10));
+
 		parkingLotService.addVehicle(new Vehicle("Car456", "Blue", VehicleType.CAR, 0));
 
-		boolean available = parkingLotService.checkAvailability(1, VehicleType.CAR);
-		System.out.println("Availability on Floor 1 for Car: " + available);
+		parkingLotService.checkAvailability(2, VehicleType.CAR);
 
 		parkingLotService.removeVehicle("Car123");
 
-		double parkingFee = ((ParkingLotServiceImpl) parkingLotService).calculateParkingFee(VehicleType.CAR, 2);
-		System.out.println("Parking fee for 2 hours: ₹" + parkingFee);
+		((ParkingLotServiceImpl) parkingLotService).calculateParkingFee(VehicleType.CAR, 4);
 	}
 
 }

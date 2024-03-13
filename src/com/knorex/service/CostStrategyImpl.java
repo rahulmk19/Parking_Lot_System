@@ -1,6 +1,7 @@
 package com.knorex.service;
 
 import com.knorex.Model.VehicleType;
+import com.knorex.repository.CostStrategy;
 
 public class CostStrategyImpl implements CostStrategy {
 

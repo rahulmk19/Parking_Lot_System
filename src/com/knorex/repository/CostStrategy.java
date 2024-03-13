@@ -1,4 +1,4 @@
-package com.knorex.service;
+package com.knorex.repository;
 
 import com.knorex.Model.VehicleType;
 
